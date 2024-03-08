@@ -5,6 +5,9 @@ import { wait } from "./utility.js";
 export const deletePolyanets = (row, column) => {
   axios
     .delete(`${baseURL}/polyanets`, {
+      header: {
+        "Content-Type": "application/json",
+      },
       data: {
         candidateId,
         row,
@@ -18,9 +21,14 @@ export const deletePolyanets = (row, column) => {
 export const createPolyanets = async (row, column) => {
   axios
     .post(`${baseURL}/polyanets`, {
-      candidateId,
-      row,
-      column,
+      header: {
+        "Content-Type": "application/json",
+      },
+      body: {
+        candidateId,
+        row,
+        column,
+      },
     })
     .catch((err) => console.error(err));
 };

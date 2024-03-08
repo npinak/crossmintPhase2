@@ -5,6 +5,9 @@ import { wait } from "./utility.js";
 export const deleteSoloons = (row, column) => {
   axios
     .delete(`${baseURL}/soloons`, {
+      header: {
+        "Content-Type": "application/json",
+      },
       data: {
         candidateId,
         row,
@@ -18,10 +21,15 @@ export const deleteSoloons = (row, column) => {
 export const createSoloons = async (row, column, color) => {
   axios
     .post(`${baseURL}/soloons`, {
-      candidateId,
-      row,
-      column,
-      color,
+      header: {
+        "Content-Type": "application/json",
+      },
+      body: {
+        candidateId,
+        row,
+        column,
+        color,
+      },
     })
     .catch((err) => console.error(err));
 };
